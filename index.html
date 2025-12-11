@@ -1,14 +1,149 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Change Calculator</title>
-  </head>
-  <body>
-    <!-- Write your markup here -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Calculator</title>
 
-    <!-- Don't forget to add your <script> tag here -->
+  <!-- Semantic UI CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css"/>
+  <link rel="stylesheet" href="styles.css">
 
-  </body>
+</head>
+
+<body class="ui container">
+  <div class="calc-wrapper">
+
+  <h1 class="ui center aligned header" style="margin-top: 2rem;">Change Calculator</h1>
+
+  <!-- Main form for owed / paid -->
+  <div class="ui form" style="margin-top: 2rem;">
+    <div class="two fields">
+      <div class="field">
+        <a class="ui red ribbon label">Input Amount Owed</a>
+        <!--label>Amount Owed</label-->
+        <input id="amount-due" type="number" min="0.01" step="0.01" placeholder="$0.00">
+      </div>
+      <div class="field">
+        <a class="ui green ribbon label">Input Amount Paid</a>
+        <!--label>Amount Paid</label-->
+        <input id="amount-received" type="number" min="0.01" step="0.01" placeholder="$0.00">
+      </div>
+    </div>
+    <div>
+          <p id="dollars-output" hidden></p>
+          <p id="quarters-output" hidden></p>
+          <p id="dimes-output" hidden></p>
+          <p id="nickels-output" hidden></p>
+          <p id="pennies-output" hidden></p>
+        </div>
+  </div>
+
+  <div class="ui buttons" style="margin-top: 1rem;">
+    <!-- BUTTON TO OPEN POPUP -->
+    <button id="openMenuBtn" class="ui large violet button">
+      Choose Denominations
+    </button>
+
+    <div class="or"></div>
+
+    <!-- Calculate button -->
+    <button id="calculate-change" class="ui large green button" onclick="runCalc()">Calculate Change</button>
+
+    <p id="change-due" style="margin-left: 2rem; font-size: 1.2rem; align-self: center;"></p>
+
+  </div>
+
+  <!-- Output area -->
+  <h3 id="denomTitle" class="ui dividing header" style="margin-top: 2rem;">Denominations Selected</h3>
+  <pre id="denomDisplay" class="ui segment"></pre>
+
+  <h4 class="ui header" style="margin-top: 2rem;">Result placeholder</h4>
+  <pre id="output" class="ui segment"></pre>
+
+
+
+  <!-- POPUP OVERLAY (our own, not Semantic dimmer) -->
+  <div id="popupOverlay" class="overlay">
+    <!-- Semantic-style modal -->
+    <div class="ui small modal active popup-modal">
+      <div class="header">
+        Select Denominations
+      </div>
+
+      <div class="content">
+        <form class="ui form">
+          <div class="grouped fields">
+
+            <!-- bills > $1: default OFF (20, 10, 5) -->
+            <div class="field">
+              <div class="ui toggle checkbox">
+                <input type="checkbox" value="20" class="denom-toggle">
+                <label>$20</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui toggle checkbox">
+                <input type="checkbox" value="10" class="denom-toggle">
+                <label>$10</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui toggle checkbox">
+                <input type="checkbox" value="5" class="denom-toggle">
+                <label>$5</label>
+              </div>
+            </div>
+
+            <!-- $1 and coins: default ON -->
+            <div class="field">
+              <div class="ui toggle checkbox">
+                <input type="checkbox" value="1" class="denom-toggle" checked>
+                <label>$1</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui toggle checkbox">
+                <input type="checkbox" value="0.25" class="denom-toggle" checked>
+                <label>Quarters ($0.25)</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui toggle checkbox">
+                <input type="checkbox" value="0.10" class="denom-toggle" checked>
+                <label>Dimes ($0.10)</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui toggle checkbox">
+                <input type="checkbox" value="0.05" class="denom-toggle" checked>
+                <label>Nickels ($0.05)</label>
+              </div>
+            </div>
+
+            <!-- Pennies intentionally NOT included here -->
+          </div>
+        </form>
+      </div>
+
+      <div class="actions">
+        <button id="closeMenuBtn" class="ui red button">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+  <script src="main.js"></script>
+</div>
+</body>
 </html>

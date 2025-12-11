@@ -1,0 +1,40 @@
+body {
+  padding-top: 3rem;
+}
+
+/* Fullscreen overlay behind the popup */
+.overlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background: rgba(0, 0, 0, 0.45);
+  display: none;              /* JS sets to flex when open */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal size constraints */
+.popup-modal {
+  max-width: 400px;
+  width: 90%;
+}
+
+.calc-wrapper {
+  background: rgba(56, 54, 54, 0.65); /* semi-transparent white */
+  backdrop-filter: blur(6px);            /* optional frosted glass */
+  padding: 2rem;
+  border-radius: 12px;
+  /*max-width: 600px;*/
+  margin: 2rem auto;                     /* center it */
+  box-shadow: 0 4px 20px rgba(0, 180, 9, 0.25);
+}
+
+#denomDisplay {
+  margin-top: 2rem;
+}
+#output {
+  margin-top: 1.5rem;
+  white-space: pre-wrap;
+}
+
+
