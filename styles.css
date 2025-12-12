@@ -32,9 +32,42 @@ body {
 #denomDisplay {
   margin-top: 2rem;
 }
-#output {
+
+/* First dynamic output (message / change due) */
+#primary-output .primary-text {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* Second dynamic output: stacked rows of denoms and counts */
+#denomDisplay {
   margin-top: 1.5rem;
-  white-space: pre-wrap;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Top row: denominations, bottom row: counts */
+#denomDisplay .denom-row,
+#denomDisplay .count-row {
+  display: flex;
+  font-size: large;
+  
+  font-weight: 700;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+}
+
+/* Each cell evenly spaced and centered */
+#denomDisplay span {
+  flex: 1;
+  text-align: center;
+}
+
+#calculate-change:disabled {
+  opacity: 0.45 !important;
+  cursor: not-allowed !important;
 }
 
 

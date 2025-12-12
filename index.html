@@ -12,7 +12,7 @@
 </head>
 
 <body class="ui container">
-  <div class="calc-wrapper">
+<div class="calc-wrapper">
 
   <h1 class="ui center aligned header" style="margin-top: 2rem;">Change Calculator</h1>
 
@@ -30,15 +30,16 @@
         <input id="amount-received" type="number" min="0.01" step="0.01" placeholder="$0.00">
       </div>
     </div>
-    <div>
+    <!--div>
           <p id="dollars-output" hidden></p>
           <p id="quarters-output" hidden></p>
           <p id="dimes-output" hidden></p>
           <p id="nickels-output" hidden></p>
           <p id="pennies-output" hidden></p>
-        </div>
+        </div-->
   </div>
 
+  <!-- Buttons -->
   <div class="ui buttons" style="margin-top: 1rem;">
     <!-- BUTTON TO OPEN POPUP -->
     <button id="openMenuBtn" class="ui large violet button">
@@ -48,20 +49,25 @@
     <div class="or"></div>
 
     <!-- Calculate button -->
-    <button id="calculate-change" class="ui large green button" onclick="runCalc()">Calculate Change</button>
-
-    <p id="change-due" style="margin-left: 2rem; font-size: 1.2rem; align-self: center;"></p>
+    <button id="calculate-change" class="ui large green button" onclick="runCalc()" disabled>Calculate Change</button>
 
   </div>
 
-  <!-- Output area -->
-  <h3 id="denomTitle" class="ui dividing header" style="margin-top: 2rem;">Denominations Selected</h3>
-  <pre id="denomDisplay" class="ui segment"></pre>
+<br>
 
-  <h4 class="ui header" style="margin-top: 2rem;">Result placeholder</h4>
-  <pre id="output" class="ui segment"></pre>
+<!-- Output area -->
+<div>
+  <!-- 1st output: change due -->
+  <div id="primary-output" class="ui segment" style="margin-top: 1rem;">
+  <p id="change-due" class="primary-text"></p>
+</div>
 
-
+  <!-- 2nd output: denominations / counts -->
+  <h3 id="denomTitle" class="ui dividing header" style="margin-top: 2rem;">
+  Denominations Selected
+  </h3>
+  <div id="denomDisplay" class="ui segment"></div>
+</div>
 
   <!-- POPUP OVERLAY (our own, not Semantic dimmer) -->
   <div id="popupOverlay" class="overlay">
@@ -138,7 +144,7 @@
       </div>
     </div>
   </div>
-  </div>
+</div>
 
   
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
