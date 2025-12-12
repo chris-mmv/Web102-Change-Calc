@@ -164,6 +164,26 @@ function calcChange(owed, paid, denomList) {
   return result;
 }
 
+//  Set test outputs for NPM tests
+function setTestOutputs(change) {
+  const map = {
+    1: "dollars-output",
+    0.25: "quarters-output",
+    0.10: "dimes-output",
+    0.05: "nickels-output",
+    0.01: "pennies-output"
+  };
+
+  Object.entries(map).forEach(([denom, id]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const item = change.find(c => c.denom === Number(denom));
+    el.textContent = item ? item.count : 0;
+  });
+}
+
+
 //  Enable calc button after inputs are valid
 function validateInputs() {
   const owedInput = document.getElementById("amount-due");
@@ -246,6 +266,8 @@ function runCalc() {
   if (typeof updateDenomDisplay === "function") updateDenomDisplay();
   return;
 }
+  // Set the test outputs for NPM tests
+  setTestOutputs(change);
 
   // Update title for "after" view
   if (denomTitle) {
@@ -298,15 +320,15 @@ function runCalc() {
  // }
   //}
 
-  //only needed $1 and below, but did them all for completeness
-  //setCount("twenties-output", 20, "$20");
-  //setCount("tens-output", 10, "$10");
-  //setCount("fives-output", 5, "$5");
-  //setCount("dollars-output", 1, "$1");
-  //setCount("quarters-output", 0.25, "25¢");
-  //setCount("dimes-output", 0.10, "10¢");
-  //setCount("nickels-output", 0.05, "5¢");
-  //setCount("pennies-output", 0.01, "1¢");
+  // only needed $1 and below, but did them all for completeness
+  // setCount("twenties-output", 20, "$20");
+  // setCount("tens-output", 10, "$10");
+  // setCount("fives-output", 5, "$5");
+  // setCount("dollars-output", 1, "$1");
+  // setCount("quarters-output", 0.25, "25¢");
+  // setCount("dimes-output", 0.10, "10¢");
+  // setCount("nickels-output", 0.05, "5¢");
+  // setCount("pennies-output", 0.01, "1¢");
 
   // Build dynamic <p> elements inside #change-output
   // if (container) {
