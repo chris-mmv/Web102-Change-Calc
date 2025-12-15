@@ -19,23 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const paidInput = document.getElementById("amount-received");
   const calcBtn   = document.getElementById("calculate-change");
 
-  // // --- input validation helper (INSIDE DOMContentLoaded) ---
-  // function validateInputs() {
-  //   const owed = owedInput.value.trim();
-  //   const paid = paidInput.value.trim();
 
-  //   if (
-  //     owed !== "" &&
-  //     paid !== "" &&
-  //     !isNaN(Number(owed)) &&
-  //     !isNaN(Number(paid))
-  //   ) {
-  //     calcBtn.disabled = false;
-  //   } else {
-  //     calcBtn.disabled = true;
-  //   }
-  // }
-  // Hook up input events
+  // input events
   owedInput.addEventListener("input", validateInputs);
   paidInput.addEventListener("input", validateInputs);
 
@@ -61,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Clear existing content
   disp.innerHTML = "";
 
-  // Build a single row that uses the same spacing as the post-calc denom row
+  // Build single
   const denomRow = document.createElement("div");
   denomRow.className = "denom-row";
 
@@ -75,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   disp.appendChild(denomRow);
 
-  // Optional: animate only if you still want the fly-in effect
+  // animate the fly-in effect
   $(disp).transition({
     animation: "fly left in",
     duration: 600
@@ -85,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Start fresh
   denoms = [];
 
-  // Always include the penny
+  // Always include penny
   denoms.push(FIXED_PENNY);
 
   // Initialize checkboxes & denoms array
@@ -105,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sort from highest → lowest
   denoms.sort((a, b) => b - a);
 if (denomEl) {
-  updateDenomDisplay(); // show selected denoms nicely (no JSON)
+  updateDenomDisplay(); // show selected denoms
 }
 
 
@@ -201,7 +186,7 @@ function validateInputs() {
   }
 }
 
-//  UI Logic for Running Calculator
+//  Run Calculator
 function runCalc() {
   const owedInput    = document.getElementById("amount-due");
   const paidInput    = document.getElementById("amount-received");
@@ -222,7 +207,7 @@ function runCalc() {
   // Restore the pre-calculation denomination view
   if (typeof updateDenomDisplay === "function") updateDenomDisplay();
 
-  // Animate the message
+  // Animate message
   $(changeDueEl).transition("fly left in");
 
   return;
@@ -305,57 +290,4 @@ function runCalc() {
     denomEl.appendChild(countRow);
   }
 
-  // Set per-denomination counts (required for NPM test)
-  //function setCount(id, denom, label) {
-  //const el = document.getElementById(id);
-  //if (!el) return;
-
-  //const item = change.find(r => r.denom === denom);
-
- // if (!item || item.count === 0) {
- //   el.style.display = "none";       // hide unused denominations
- // } else {
- //   el.style.display = "block";      // show only used ones
- //   el.textContent = `${label}: x${item.count}`;
- // }
-  //}
-
-  // only needed $1 and below, but did them all for completeness
-  // setCount("twenties-output", 20, "$20");
-  // setCount("tens-output", 10, "$10");
-  // setCount("fives-output", 5, "$5");
-  // setCount("dollars-output", 1, "$1");
-  // setCount("quarters-output", 0.25, "25¢");
-  // setCount("dimes-output", 0.10, "10¢");
-  // setCount("nickels-output", 0.05, "5¢");
-  // setCount("pennies-output", 0.01, "1¢");
-
-  // Build dynamic <p> elements inside #change-output
-  // if (container) {
-  //   container.innerHTML = "";  // clear old rows
-
-  //   change.forEach(item => {
-  //     if (item.count > 0) {
-  //       const row = document.createElement("p");
-
-  //       const label = item.denom >= 1
-  //         ? `$${item.denom}`
-  //         : `${item.denom * 100}${String.fromCharCode(162)}`;
-
-  //       row.textContent = `${label}:\n x\n${item.count}`;
-  //       container.appendChild(row);
-  //     }
-  //   });
-  // }
-
-  // // Optional summary string for #output (just counts)
-  // let outputText = "";
-  // change.forEach(item => {
-  //   if (item.count > 0) {
-  //     outputText += `x${item.count} `;
-  //   }
-  // });
-
-  // outputEl.textContent = outputText.trim();
-  // console.log(outputText);
 }
