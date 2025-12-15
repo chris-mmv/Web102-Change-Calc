@@ -32,14 +32,14 @@ body {
   margin-top: 2rem;
 }
 
-/* First dynamic output (message / change due) */
+/* First output (message / change due) */
 #primary-output .primary-text {
   font-size: 1.2rem;
   text-align: center;
   margin: 0;
 }
 
-/* Second dynamic output: stacked rows of denoms and counts */
+/* Second output: stacked rows of denoms and counts */
 #denomDisplay {
   margin-top: 1.5rem;
   display: flex;
